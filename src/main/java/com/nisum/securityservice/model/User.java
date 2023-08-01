@@ -5,7 +5,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class User extends BaseModel {
 
     private String name;
@@ -33,6 +36,8 @@ public class User extends BaseModel {
 
     @Column(name = "is_active")
     private Boolean isActive = true;
+
+    private LocalDateTime lastLogin;
 
 
     @OneToMany(cascade = CascadeType.ALL,

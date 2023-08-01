@@ -19,5 +19,7 @@ public class UserRequest {
 
     private String password;
 
+    private Boolean isActive;
+
     private List<PhoneRequest> phones = new ArrayList<>();
 }

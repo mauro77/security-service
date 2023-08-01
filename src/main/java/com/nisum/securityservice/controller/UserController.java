@@ -1,5 +1,6 @@
 package com.nisum.securityservice.controller;
 
+import com.nisum.securityservice.dto.user.UpdateUserRequest;
 import com.nisum.securityservice.dto.user.UserDto;
 import com.nisum.securityservice.dto.user.UserRequest;
 import com.nisum.securityservice.service.UserService;
@@ -42,7 +43,17 @@ public class UserController {
 
     @GetMapping("{uuid}")
     public ResponseEntity<UserDto> getById(@PathVariable("uuid") UUID userUuid) {
-        UserDto userDto = service.findByUuid(userUuid);
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        return new ResponseEntity<>(service.findByUuid(userUuid), HttpStatus.OK);
+    }
+
+    @PatchMapping("{uuid}")
+    public ResponseEntity<UserDto> update(@PathVariable("uuid") UUID uuid, @Valid @RequestBody UpdateUserRequest updateRequest) {
+        return new ResponseEntity<>(service.update(uuid, updateRequest), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{uuid}")
+    public ResponseEntity<Void> delete(@PathVariable("uuid") UUID uuid) {
+        service.delete(uuid);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

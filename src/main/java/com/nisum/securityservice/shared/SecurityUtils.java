@@ -1,6 +1,4 @@
 package com.nisum.securityservice.shared;
-
-import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -27,20 +25,6 @@ public class SecurityUtils {
   public static String encryptPassword(String password) {
     String sha256hex = DigestUtils.sha256Hex(password);
     return sha256hex;
-  }
-
-  /**
-   * Get the remote ip address from servlet request
-   *
-   * @param httpServletRequest
-   * @return
-   *
-   * @author Mauricio Hincapié
-   * @version 1.0
-   * @since 2023-07-31
-   */
-  public static String generateIpFromServletRequest(HttpServletRequest httpServletRequest) {
-    return httpServletRequest.getRemoteAddr();
   }
 
 }

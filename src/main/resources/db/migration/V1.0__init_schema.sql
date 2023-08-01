@@ -14,6 +14,7 @@ CREATE TABLE "users"
     "password"         varchar(100)  not null,
     "token"            varchar(5000) not null,
     "is_active"        boolean       not null default true,
+    "last_login" datetime,
     primary key ("uuid")
 );
 
@@ -25,7 +26,7 @@ create table "phones"
     "last_modified_at" datetime,
     "deleted_at"       datetime,
     "is_deleted"       boolean,
-    "user_uuid"        uuid         not null,
+    "user_uuid"        uuid,
     "number"           varchar(100) not null,
     "city_code"        varchar(10)  not null,
     "country_code"     varchar(10)  not null,

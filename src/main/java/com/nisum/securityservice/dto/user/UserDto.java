@@ -3,6 +3,7 @@ package com.nisum.securityservice.dto.user;
 import com.nisum.securityservice.dto.phone.PhoneDto;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ public class UserDto {
     private LocalDateTime createdAt;
 
     private LocalDateTime lastModifiedAt;
+
+    private LocalDateTime lastLogin;
 
     private List<PhoneDto> phones = new ArrayList<>();
 }

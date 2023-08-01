@@ -48,13 +48,15 @@ public class PhoneServiceImpl implements PhoneService {
     public List<PhoneDto> saveOrUpdateForUser(List<PhoneRequest> createOrUpdateRequest, User user) {
         return createOrUpdateRequest.stream().map(request -> {
             Phone phone = getForSaveOrUpdate(request);
-            return phoneMapper.toDto(phone);
+            phone.setUser(user);
+            Phone savedPhone = phoneRepository.save(phone);
+            return phoneMapper.toDto(savedPhone);
         }).collect(Collectors.toList());
     }
 
     private Phone getForSaveOrUpdate(PhoneRequest request) {
         if (request.getUuid() != null) {
-            Phone foundPhone = phoneRepository.findById(request.getUuid()).orElseThrow(() -> new ResourceNotFoundException("Phone whit uuid" + request.getUuid().toString() + "not found"));
+            Phone foundPhone = phoneRepository.findById(request.getUuid()).orElseThrow(() -> new ResourceNotFoundException("Phone whit uuid" + request.getUuid().toString() + " not found"));
             phoneMapper.updateModel(request, foundPhone);
             return foundPhone;
         } else {
