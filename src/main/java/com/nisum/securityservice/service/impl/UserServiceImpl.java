@@ -42,10 +42,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
 
-    @Value("${app.regex.email}")
     private String emailRegex;
 
-    @Value("${app.regex.password}")
     private String passRegex;
 
 
@@ -114,16 +112,10 @@ public class UserServiceImpl implements UserService {
         Pattern passwordPattern = Pattern.compile(passRegex);
         Matcher matcher = passwordPattern.matcher(password);
         if (!matcher.matches()) {
-            throw new UnprocessableEntityException("Wrong password format. Min length 8, must contain at least 1 number and 1 letter");
+            throw new UnprocessableEntityException("Wrong password format. Min length 8, must contain at least 1 number and 1 letter and 1 capital letter");
         }
     }
 
-
-    /**
-     * List all existing users
-     *
-     * @return List<UserDto>
-     */
     @Override
     @Transactional(readOnly = true)
     public List<UserDto> getAll() {
@@ -131,12 +123,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.toDto(users);
     }
 
-    /**
-     * Find a user by its uuid
-     *
-     * @param uuid - User uuid
-     * @return UserDto
-     */
     @Override
     @Transactional(readOnly = true)
     public UserDto findByUuid(UUID uuid) {
@@ -151,5 +137,15 @@ public class UserServiceImpl implements UserService {
             throw new ResourceNotFoundException("The user does not exists");
         }
         userRepository.deleteById(uuid);
+    }
+
+    @Value("${app.regex.email}")
+    public void setEmailRegex(String emailRegex) {
+        this.emailRegex = emailRegex;
+    }
+
+    @Value("${app.regex.password}")
+    public void setPasswordRegex(String passwordRegex) {
+        this.passRegex = passwordRegex;
     }
 }

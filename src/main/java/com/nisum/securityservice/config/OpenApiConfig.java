@@ -11,7 +11,7 @@ public class OpenApiConfig {
     public OpenAPI usersMicroserviceOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title("Security Service")
-                        .description("YMicroservice for Nisum Java technical test")
+                        .description("Microservice for Nisum Java technical test")
                         .version("1.0"));
     }
 }

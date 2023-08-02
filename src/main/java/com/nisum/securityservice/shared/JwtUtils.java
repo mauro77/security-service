@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.nisum.securityservice.dto.security.AuthTokenData;
-import com.nisum.securityservice.dto.security.AuthenticatedUserBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Jwts;

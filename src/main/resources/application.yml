@@ -9,7 +9,7 @@ app:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:public;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    url: jdbc:h2:mem:mydbuser;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
     username: sa
     password: password
     driverClassName: org.h2.Driver
@@ -23,12 +23,7 @@ spring:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
   flyway:
     enabled: true
-    baseline-version: 1
-    schemas: "public"
     locations: "classpath:db/migration"
-    sql-migration-prefix: "V"
-    sql-migration-suffixes: ".sql"
-    baseline-on-migrate: true
   h2:
     console:
       enabled: true

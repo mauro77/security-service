@@ -42,7 +42,6 @@ public class User extends BaseModel {
 
     @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true, mappedBy = "user")
-    @Setter(AccessLevel.PRIVATE)
     private List<Phone> phones = new ArrayList<>();
 
 }
