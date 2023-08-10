@@ -17,7 +17,6 @@ public abstract class UserMapper {
 
     public abstract User toModel(UserRequest userRequest);
     public abstract List<UserDto> toDto(List<User> users);
-    public abstract void updateModel(UserRequest UserRequest, @MappingTarget User User);
     @Mapping(ignore = true, target = "phones")
     public abstract void updateModelFromUpdateRequest(UpdateUserRequest UserRequest, @MappingTarget User User);
 }

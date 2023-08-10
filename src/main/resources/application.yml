@@ -28,8 +28,6 @@ spring:
     console:
       enabled: true
       path: /h2-console
-  jackson:
-    property-naming-strategy: SNAKE_CASE
     serialization:
       write-date-keys-as-timestamps: false
       write-dates-as-timestamps: false
