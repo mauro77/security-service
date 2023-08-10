@@ -36,7 +36,7 @@ public class JwtUtils {
 		Map<String, Object> mapDataToken = new HashMap<>();
 		mapDataToken.put(RESPONSE_OBJECT_JWT, authTokenData);
 
-		Date expirationDate = Date.from(LocalDateTime.now().plusHours(Long.valueOf(EXPIRATION_TIME))
+		Date expirationDate = Date.from(LocalDateTime.now().plusHours(Long.parseLong(EXPIRATION_TIME))
 				.atZone(ZoneId.systemDefault()).toInstant());
 		return Jwts.builder().setSubject(authTokenData.getName()).setClaims(mapDataToken)
 				.setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, SECRET_KEY).setNotBefore(new Date())

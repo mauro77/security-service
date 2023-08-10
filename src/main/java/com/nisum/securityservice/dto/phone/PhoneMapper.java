@@ -21,6 +21,4 @@ public abstract class PhoneMapper {
     public abstract Phone createFromRequest(PhoneRequest phoneRequest);
 
     public abstract void updateModel(PhoneRequest phoneRequest, @MappingTarget Phone phone);
-
-    public abstract void updateModelFromUpdateRequest(PhoneRequest PhoneRequest, @MappingTarget Phone phone);
 }
